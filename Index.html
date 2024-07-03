@@ -1,0 +1,22 @@
+<html>
+    <!-- this .value gives us its inside value  -->
+    <script>
+        function populateDiv(){
+            const a = document.getElementById("FirstNumber").value;
+            /* this .value help us get the value inside that id*/ 
+            const b = document.getElementById("SecondNumber").value;
+            const element = document.getElementById("finalSum");
+            element.innerHTML= parseInt(a)+parseInt(b); 
+            // this parseInt help us convert string to number and we are using there here since we can't add 2 strings
+        }
+    </script>
+
+    <body>
+        <!-- So we have not defined First number id before but since we wanted to access this element inside value 
+        there fore put it inside a id now -->
+        <input id="FirstNumber" type="text" placeholder="First Number" > <br>  <br>  
+        <input id="SecondNumber" type="text" placeholder="Second Number" > <br> <br>
+        <button onclick="populateDiv()"> Calculate Sum</button> <br>
+        <div id="finalSum"></div>
+    </body>
+</html>

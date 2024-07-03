@@ -1,0 +1,31 @@
+<html>
+    <script>
+        let timeout;
+        function DelayedType(){
+            clearTimeout(timeout);
+            timeout= setTimeout(function(){
+                CalculateANS()
+            }, 1000);
+        }
+        async function CalculateANS(){
+            const a = document.getElementById("Principal").value
+            const b = document.getElementById("Rate").value
+            const c = document.getElementById("Time").value
+            
+            const response = await fetch("https://sum-server.100xdevs.com/interest?principal="+a+"&rate="+b+"&time="+c)
+            const ans = await response.text(); 
+            // we are doing this since we don't know in what form we are getting the ans but want that in text form
+            document.getElementById("Kuchbhi").innerHTML= ans;
+
+
+        }
+    </script>
+    <body>
+        <input id="Principal" type="text" placeholder="Principal" oninput="DelayedType()"> <br><br>
+        <input id="Rate" type="text" placeholder="Rate" oninput="DelayedType()"> <br><br> 
+        <!-- btw oninput should be written here with input and not on button down there tho we can write there too but here imp -->
+        <input id="Time" type="text" placeholder="Time" oninput="DelayedType()"> <br><br>
+        <button onclick="CalculateANS()">Calculate </button>  <br>
+        <div id="Kuchbhi" ></div> 
+    </body>
+</html>
